@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A student-made directory prototype with fictional, unverified campus locations."
+    />
+    <meta name="theme-color" content="#123B70" />
+    <title>Smart Campus Mini-Guide</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      sizes="any"
+      href="./src/smart-campus-handoff/assets/favicon/favicon.svg"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      sizes="16x16"
+      href="./src/smart-campus-handoff/assets/favicon/favicon-16.svg"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="./src/smart-campus-handoff/assets/favicon/app-icon-512.svg"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind = {
+        theme: {
+          extend: {
+            colors: {
+              navy: { DEFAULT: "#123B70", tint: "#EAF0F8" },
+              brand: {
+                DEFAULT: "#2563EB",
+                hover: "#1D4ED8",
+                active: "#1E40AF",
+                tint: "#EFF4FF",
+              },
+              sky: { DEFAULT: "#60A5FA", soft: "#93C5FD", mist: "#C9D8EE" },
+              ink: "#0F172A",
+              canvas: "#F8FAFC",
+              surface: "#FFFFFF",
+              line: { DEFAULT: "#E2E8F0", strong: "#CBD5E1" },
+              muted: "#64748B",
+              body: "#475569",
+              placeholder: "#94A3B8",
+              success: {
+                DEFAULT: "#16A34A",
+                text: "#15803D",
+                tint: "#DCFCE7",
+              },
+              notice: { DEFAULT: "#B45309", tint: "#FDF3E4" },
+              error: { DEFAULT: "#DC2626", tint: "#FEE2E2" },
+              cat: {
+                lecture: "#2563EB",
+                "lecture-tint": "#EFF4FF",
+                lab: "#0E7C86",
+                "lab-tint": "#E7F5F6",
+                office: "#123B70",
+                "office-tint": "#EAF0F8",
+                services: "#B45309",
+                "services-tint": "#FDF3E4",
+              },
+            },
+            fontFamily: {
+              sans: ['"Plus Jakarta Sans"', "system-ui", "sans-serif"],
+              mono: ['"JetBrains Mono"', "ui-monospace", "monospace"],
+            },
+            fontSize: {
+              display: [
+                "48px",
+                {
+                  lineHeight: "52px",
+                  letterSpacing: "-0.035em",
+                  fontWeight: "800",
+                },
+              ],
+              title: [
+                "32px",
+                {
+                  lineHeight: "40px",
+                  letterSpacing: "-0.03em",
+                  fontWeight: "800",
+                },
+              ],
+              section: [
+                "22px",
+                {
+                  lineHeight: "28px",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              card: [
+                "18px",
+                {
+                  lineHeight: "24px",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "700",
+                },
+              ],
+              body: ["15px", { lineHeight: "24px" }],
+              label: ["14px", { lineHeight: "20px", fontWeight: "600" }],
+              meta: ["12px", { lineHeight: "16px", fontWeight: "500" }],
+            },
+            borderRadius: {
+              badge: "6px",
+              control: "10px",
+              card: "14px",
+              panel: "20px",
+            },
+            boxShadow: {
+              rest: "0 1px 2px rgba(15,23,42,.06)",
+              lift: "0 8px 24px -10px rgba(18,59,112,.25)",
+              focus: "0 0 0 4px rgba(37,99,235,.18)",
+              "focus-on-navy": "0 0 0 5px rgba(96,165,250,.35)",
+            },
+            maxWidth: { container: "1200px" },
+          },
+        },
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./src/style.css" />
+    <script type="module" src="./src/app.js"></script>
+  </head>
+  <body class="bg-canvas font-sans text-ink antialiased">
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand-lockup" href="./index.html" aria-label="Smart Campus Mini-Guide home">
+          <img
+            class="brand-symbol"
+            src="./src/smart-campus-handoff/assets/logo/symbol.svg"
+            alt=""
+            width="40"
+            height="40"
+          />
+          <span class="brand-copy">
+            <span class="brand-name">Smart Campus</span>
+            <span class="brand-university">University of Nyíregyháza</span>
+          </span>
+        </a>
+
+        <span class="header-divider" aria-hidden="true"></span>
+
+        <nav class="primary-nav" aria-label="Main navigation">
+          <a class="nav-link is-current" href="#directory" aria-current="page">Directory</a>
+          <a class="nav-link" href="#directory" aria-disabled="true">Buildings</a>
+          <a class="nav-link" href="#directory" aria-disabled="true">Services</a>
+          <a class="nav-link" href="#about" aria-disabled="true">About</a>
+        </nav>
+
+        <div class="header-actions">
+          <span class="prototype-badge">
+            <span class="prototype-dot" aria-hidden="true"></span>
+            Prototype · sample data
+          </span>
+          <button class="language-button" type="button" aria-label="Language: English">
+            <img
+              src="./src/smart-campus-handoff/assets/icons/globe.svg"
+              alt=""
+              width="18"
+              height="18"
+            />
+            <span>EN</span>
+            <img
+              class="language-chevron"
+              src="./src/smart-campus-handoff/assets/icons/chevron-down.svg"
+              alt=""
+              width="16"
+              height="16"
+            />
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <p class="eyebrow"><span aria-hidden="true"></span> CAMPUS DIRECTORY</p>
+            <h1 id="hero-title">Find your way around campus.</h1>
+            <p class="hero-description">
+              Discover classrooms, laboratories, offices and student services at the University
+              of Nyíregyháza.
+            </p>
+          </div>
+
+          <form class="search-form" role="search">
+            <img
+              class="search-icon"
+              src="./src/smart-campus-handoff/assets/icons/search.svg"
+              alt=""
+              width="22"
+              height="22"
+            />
+            <label class="sr-only" for="campus-search">Search the campus directory</label>
+            <input
+              id="campus-search"
+              name="q"
+              type="search"
+              placeholder="Search rooms, buildings or services..."
+              autocomplete="off"
+              aria-describedby="search-help"
+            />
+            <span id="search-help" class="keyboard-hint" aria-hidden="true">
+              <kbd>/</kbd>
+            </span>
+            <button class="clear-search" type="button" aria-label="Clear search" hidden>
+              <img
+                src="./src/smart-campus-handoff/assets/icons/x.svg"
+                alt=""
+                width="18"
+                height="18"
+              />
+            </button>
+            <button class="search-button" type="submit">Search</button>
+          </form>
+
+          <div class="popular-searches" aria-label="Popular searches">
+            <span class="popular-label">Popular:</span>
+            <button class="popular-pill" type="button" data-query="Registrar">Registrar</button>
+            <button class="popular-pill" type="button" data-query="Library">Library</button>
+            <button class="popular-pill" type="button" data-query="Computer Lab">
+              Computer Lab
+            </button>
+            <button class="popular-pill" type="button" data-query="International Office">
+              International Office
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="directory-section" id="directory" aria-label="Campus locations">
+        <div class="directory-inner">
+          <div class="filter-toolbar">
+            <div class="filter-list" role="tablist" aria-label="Location categories">
+              <button
+                class="filter-chip is-active"
+                type="button"
+                role="tab"
+                aria-selected="true"
+                data-category="all"
+              >
+                <img
+                  src="./src/smart-campus-handoff/assets/icons/cat-all.svg"
+                  alt=""
+                  width="18"
+                  height="18"
+                />
+                <span>All Locations</span>
+                <span class="filter-count" data-count="all">—</span>
+              </button>
+              <button
+                class="filter-chip"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                data-category="lecture"
+                tabindex="-1"
+              >
+                <img
+                  src="./src/smart-campus-handoff/assets/icons/cat-lecture.svg"
+                  alt=""
+                  width="18"
+                  height="18"
+                />
+                <span>Lecture Halls</span>
+                <span class="filter-count" data-count="lecture">—</span>
+              </button>
+              <button
+                class="filter-chip"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                data-category="lab"
+                tabindex="-1"
+              >
+                <img
+                  src="./src/smart-campus-handoff/assets/icons/cat-lab.svg"
+                  alt=""
+                  width="18"
+                  height="18"
+                />
+                <span>Laboratories</span>
+                <span class="filter-count" data-count="lab">—</span>
+              </button>
+              <button
+                class="filter-chip"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                data-category="office"
+                tabindex="-1"
+              >
+                <img
+                  src="./src/smart-campus-handoff/assets/icons/cat-office.svg"
+                  alt=""
+                  width="18"
+                  height="18"
+                />
+                <span>Offices</span>
+                <span class="filter-count" data-count="office">—</span>
+              </button>
+              <button
+                class="filter-chip"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                data-category="services"
+                tabindex="-1"
+              >
+                <img
+                  src="./src/smart-campus-handoff/assets/icons/cat-services.svg"
+                  alt=""
+                  width="18"
+                  height="18"
+                />
+                <span>Student Services</span>
+                <span class="filter-count" data-count="services">—</span>
+              </button>
+            </div>
+            <p class="result-count" aria-live="polite" aria-atomic="true">
+              <span data-result-count>Loading locations…</span>
+            </p>
+          </div>
+
+          <div class="loading-grid" data-loading aria-label="Loading locations">
+            <div class="skeleton-card" aria-hidden="true"></div>
+            <div class="skeleton-card" aria-hidden="true"></div>
+            <div class="skeleton-card" aria-hidden="true"></div>
+            <div class="skeleton-card" aria-hidden="true"></div>
+            <div class="skeleton-card" aria-hidden="true"></div>
+            <div class="skeleton-card" aria-hidden="true"></div>
+          </div>
+
+          <div class="location-grid" data-location-grid aria-live="off" hidden></div>
+
+          <section class="empty-state" data-empty-state aria-labelledby="empty-title" hidden>
+            <div class="empty-illustration" aria-hidden="true">
+              <img
+                src="./src/smart-campus-handoff/assets/icons/cat-all.svg"
+                alt=""
+                width="36"
+                height="36"
+              />
+              <span class="empty-question">?</span>
+            </div>
+            <h2 id="empty-title"><span data-empty-title></span></h2>
+            <p data-empty-description></p>
+            <div class="empty-actions">
+              <button class="empty-action empty-action-primary" type="button" data-reset-filters>
+                Show all locations
+              </button>
+              <button class="empty-action empty-action-secondary" type="button" data-clear-empty-search>
+                Clear search
+              </button>
+            </div>
+          </section>
+
+          <p class="load-error" data-load-error role="alert" hidden>
+            Campus locations could not be loaded. Please check the local server and reload the page.
+          </p>
+        </div>
+      </section>
+
+      <dialog
+        class="details-dialog"
+        data-details-dialog
+        aria-labelledby="details-title"
+        aria-modal="true"
+      >
+        <div class="details-panel">
+          <header class="details-header">
+            <div class="details-heading-copy">
+              <p class="details-eyebrow">LOCATION DETAILS</p>
+              <h2 class="details-title" id="details-title" data-details-name></h2>
+            </div>
+            <button
+              class="details-close"
+              type="button"
+              aria-label="Close location details"
+              data-details-close
+              autofocus
+            >
+              <img
+                src="./src/smart-campus-handoff/assets/icons/x.svg"
+                alt=""
+                width="20"
+                height="20"
+              />
+            </button>
+          </header>
+          <div class="details-content">
+            <p class="details-category" data-details-category>
+              <span class="details-category-icon category-icon-tile" data-details-category-icon></span>
+              <span data-details-category-label></span>
+            </p>
+            <dl class="details-list">
+              <div class="details-row">
+                <dt>Location ID</dt>
+                <dd class="details-id" data-details-id></dd>
+              </div>
+              <div class="details-row">
+                <dt>Building</dt>
+                <dd data-details-building></dd>
+              </div>
+              <div class="details-row">
+                <dt>Floor</dt>
+                <dd data-details-floor></dd>
+              </div>
+            </dl>
+            <section class="details-description-section" aria-labelledby="details-description-label">
+              <h3 id="details-description-label">Description</h3>
+              <p data-details-description></p>
+            </section>
+            <p class="verification-status" data-details-verification>
+              <span class="verification-indicator" aria-hidden="true"></span>
+              <span data-details-verification-label></span>
+            </p>
+          </div>
+        </div>
+      </dialog>
+    </main>
+
+    <footer class="site-footer" id="about">
+      <div class="footer-inner">
+        <p class="footer-disclaimer">
+          <span class="disclaimer-icon" aria-hidden="true">!</span>
+          All locations shown are fictional sample data and have not been verified.
+        </p>
+        <p>Independent student project · not an official University of Nyíregyháza service</p>
+      </div>
+    </footer>
+  </body>
+</html>

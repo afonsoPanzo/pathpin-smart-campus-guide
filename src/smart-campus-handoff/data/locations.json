@@ -1,0 +1,120 @@
+{
+  "_note": "FICTIONAL SAMPLE DATA — not verified. Do not present as real University of Nyíregyháza facilities.",
+  "categories": [
+    {
+      "id": "lecture",
+      "label": "Lecture Halls",
+      "short": "Lecture Hall",
+      "color": "#2563EB",
+      "tint": "#EFF4FF",
+      "icon": "cat-lecture"
+    },
+    {
+      "id": "lab",
+      "label": "Laboratories",
+      "short": "Laboratory",
+      "color": "#0E7C86",
+      "tint": "#E7F5F6",
+      "icon": "cat-lab"
+    },
+    {
+      "id": "office",
+      "label": "Offices",
+      "short": "Office",
+      "color": "#123B70",
+      "tint": "#EAF0F8",
+      "icon": "cat-office"
+    },
+    {
+      "id": "services",
+      "label": "Student Services",
+      "short": "Student Service",
+      "color": "#B45309",
+      "tint": "#FDF3E4",
+      "icon": "cat-services"
+    }
+  ],
+  "locations": [
+    {
+      "id": "A-001",
+      "name": "Lecture Hall A1",
+      "category": "lecture",
+      "building": "Building A",
+      "floor": 0,
+      "description": "Large tiered hall used for introductory lectures and exams.",
+      "verified": false
+    },
+    {
+      "id": "B-108",
+      "name": "Computer Lab B1.08",
+      "category": "lab",
+      "building": "Building B",
+      "floor": 1,
+      "description": "Workstations with programming and design software. Student ID required.",
+      "verified": false
+    },
+    {
+      "id": "A-110",
+      "name": "Registrar's Office",
+      "category": "office",
+      "building": "Building A",
+      "floor": 1,
+      "description": "Enrolment certificates, student status and document requests.",
+      "verified": false
+    },
+    {
+      "id": "D-001",
+      "name": "Student Services Desk",
+      "category": "services",
+      "building": "Building D",
+      "floor": 0,
+      "description": "First stop for student cards, general questions and referrals.",
+      "verified": false
+    },
+    {
+      "id": "B-214",
+      "name": "Seminar Room B2.14",
+      "category": "lecture",
+      "building": "Building B",
+      "floor": 2,
+      "description": "Flexible seating for seminars and group work, up to 30 people.",
+      "verified": false
+    },
+    {
+      "id": "C-302",
+      "name": "Chemistry Lab C3.02",
+      "category": "lab",
+      "building": "Building C",
+      "floor": 3,
+      "description": "Teaching lab for practical sessions. Safety induction required.",
+      "verified": false
+    },
+    {
+      "id": "D-012",
+      "name": "International Office",
+      "category": "office",
+      "building": "Building D",
+      "floor": 0,
+      "description": "Support for exchange students, visas and residence paperwork.",
+      "verified": false
+    },
+    {
+      "id": "L-101",
+      "name": "Library Help Desk",
+      "category": "services",
+      "building": "Library",
+      "floor": 1,
+      "description": "Borrowing, study-room booking and research help.",
+      "verified": false
+    },
+    {
+      "id": "D-204",
+      "name": "Career Centre",
+      "category": "services",
+      "building": "Building D",
+      "floor": 2,
+      "description": "CV reviews, internships and part-time job listings.",
+      "verified": false
+    }
+  ]
+}
