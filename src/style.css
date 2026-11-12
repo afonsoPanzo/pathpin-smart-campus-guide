@@ -20,6 +20,20 @@
   --canvas: #f8fafc;
   --border: #e2e8f0;
   --strong-border: #cbd5e1;
+  /* Defaults; each category's real colours come from the data (src/ui/category-style.js). */
+  --category-color: var(--navy);
+  --category-tint: #eaf0f8;
+}
+
+/* Single-colour icon painted with currentColor through a CSS mask (src/ui/icons.js). */
+.mask-icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  background-color: currentColor;
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  mask: var(--icon) center / contain no-repeat;
 }
 
 body {
@@ -458,8 +472,7 @@ input:focus-visible {
   transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
 }
 
-.filter-chip img {
-  display: block;
+.filter-chip .mask-icon {
   width: 18px;
   height: 18px;
 }
@@ -472,10 +485,6 @@ input:focus-visible {
   border-color: var(--navy);
   background: var(--navy);
   color: white;
-}
-
-.filter-chip.is-active img {
-  filter: brightness(0) invert(1);
 }
 
 .filter-count {
@@ -513,8 +522,10 @@ input:focus-visible {
 }
 
 .location-card {
+  position: relative;
   display: flex;
   min-width: 0;
+  cursor: pointer;
   min-height: 264px;
   flex-direction: column;
   border: 1px solid var(--border);
@@ -553,26 +564,6 @@ input:focus-visible {
   font-weight: 700;
 }
 
-.category-lecture {
-  --category-color: #2563eb;
-  --category-tint: #eff4ff;
-}
-
-.category-lab {
-  --category-color: #0e7c86;
-  --category-tint: #e7f5f6;
-}
-
-.category-office {
-  --category-color: #123b70;
-  --category-tint: #eaf0f8;
-}
-
-.category-services {
-  --category-color: #b45309;
-  --category-tint: #fdf3e4;
-}
-
 .category-icon-tile {
   display: inline-flex;
   width: 34px;
@@ -585,29 +576,9 @@ input:focus-visible {
   color: var(--category-color);
 }
 
-.category-icon-tile img {
+.category-icon-tile .mask-icon {
   width: 18px;
   height: 18px;
-  filter: brightness(0) saturate(100%);
-}
-
-.category-lecture .category-icon-tile img {
-  filter: invert(31%) sepia(94%) saturate(2040%) hue-rotate(211deg) brightness(96%)
-    contrast(98%);
-}
-
-.category-lab .category-icon-tile img {
-  filter: invert(34%) sepia(27%) saturate(1600%) hue-rotate(137deg) brightness(88%)
-    contrast(96%);
-}
-
-.category-office .category-icon-tile img {
-  filter: invert(17%) sepia(52%) saturate(1990%) hue-rotate(189deg) brightness(91%)
-    contrast(97%);
-}
-
-.category-services .category-icon-tile img {
-  filter: invert(43%) sepia(55%) saturate(723%) hue-rotate(2deg) brightness(91%) contrast(94%);
 }
 
 .room-code {
@@ -713,6 +684,20 @@ input:focus-visible {
 
 .details-link:hover {
   background: var(--brand-tint, #eff4ff);
+}
+
+/* Whole card is clickable: the Details button's hit area is stretched over the
+   card, so there is still exactly one focusable control per card. */
+.details-link::after {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  content: "";
+}
+
+.location-card:has(.details-link:focus-visible) {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.18);
 }
 
 .details-link img {
@@ -991,8 +976,7 @@ input:focus-visible {
   justify-content: center;
 }
 
-.details-category-icon img {
-  display: block;
+.details-category-icon .mask-icon {
   width: 20px;
   height: 20px;
 }
@@ -1086,6 +1070,42 @@ input:focus-visible {
   height: 8px;
   border-radius: 50%;
   background: currentColor;
+}
+
+.details-share-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 26px;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 20px;
+}
+
+.details-share {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: white;
+  padding: 0 16px;
+  color: var(--body);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  transition: background-color 150ms ease, border-color 150ms ease;
+}
+
+.details-share:hover {
+  border-color: var(--strong-border);
+  background: var(--canvas);
+}
+
+.details-share-status {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .details-open {

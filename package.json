@@ -1,0 +1,16 @@
+{
+  "name": "pathpin",
+  "version": "0.3.0",
+  "private": true,
+  "description": "Pathpin — Smart Campus Navigation & Information Platform (prototype).",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test",
+    "validate:data": "node scripts/validate-data.js",
+    "check": "node scripts/validate-data.js && node --test",
+    "smoke": "node scripts/browser-smoke.js"
+  }
+}

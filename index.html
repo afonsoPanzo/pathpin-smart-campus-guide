@@ -250,83 +250,11 @@
                 aria-selected="true"
                 data-category="all"
               >
-                <img
-                  src="./src/smart-campus-handoff/assets/icons/cat-all.svg"
-                  alt=""
-                  width="18"
-                  height="18"
-                />
+                <span data-icon="cat-all"></span>
                 <span>All Locations</span>
-                <span class="filter-count" data-count="all">—</span>
+                <span class="filter-count">—</span>
               </button>
-              <button
-                class="filter-chip"
-                type="button"
-                role="tab"
-                aria-selected="false"
-                data-category="lecture"
-                tabindex="-1"
-              >
-                <img
-                  src="./src/smart-campus-handoff/assets/icons/cat-lecture.svg"
-                  alt=""
-                  width="18"
-                  height="18"
-                />
-                <span>Lecture Halls</span>
-                <span class="filter-count" data-count="lecture">—</span>
-              </button>
-              <button
-                class="filter-chip"
-                type="button"
-                role="tab"
-                aria-selected="false"
-                data-category="lab"
-                tabindex="-1"
-              >
-                <img
-                  src="./src/smart-campus-handoff/assets/icons/cat-lab.svg"
-                  alt=""
-                  width="18"
-                  height="18"
-                />
-                <span>Laboratories</span>
-                <span class="filter-count" data-count="lab">—</span>
-              </button>
-              <button
-                class="filter-chip"
-                type="button"
-                role="tab"
-                aria-selected="false"
-                data-category="office"
-                tabindex="-1"
-              >
-                <img
-                  src="./src/smart-campus-handoff/assets/icons/cat-office.svg"
-                  alt=""
-                  width="18"
-                  height="18"
-                />
-                <span>Offices</span>
-                <span class="filter-count" data-count="office">—</span>
-              </button>
-              <button
-                class="filter-chip"
-                type="button"
-                role="tab"
-                aria-selected="false"
-                data-category="services"
-                tabindex="-1"
-              >
-                <img
-                  src="./src/smart-campus-handoff/assets/icons/cat-services.svg"
-                  alt=""
-                  width="18"
-                  height="18"
-                />
-                <span>Student Services</span>
-                <span class="filter-count" data-count="services">—</span>
-              </button>
+              <!-- Category tabs are rendered from the data by src/ui/category-filters.js -->
             </div>
             <p class="result-count" aria-live="polite" aria-atomic="true">
               <span data-result-count>Loading locations…</span>
@@ -426,6 +354,10 @@
               <span class="verification-indicator" aria-hidden="true"></span>
               <span data-details-verification-label></span>
             </p>
+            <div class="details-share-row">
+              <button class="details-share" type="button" data-details-share>Copy link</button>
+              <span class="details-share-status" data-details-share-status role="status" aria-live="polite"></span>
+            </div>
           </div>
         </div>
       </dialog>
